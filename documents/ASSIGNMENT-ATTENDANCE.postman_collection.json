@@ -1,0 +1,586 @@
+{
+	"info": {
+		"_postman_id": "70fbce80-ac5a-4fd4-b2e5-f49e63e0981e",
+		"name": "AEU-MSIT-ASSIGNMENT-ATTENDANCE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "1759409"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "SignIn",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"var token = jsonData.token;\r",
+									"if(token){\r",
+									" pm.environment.set(\"access_token\",token);   \r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"morakort\", \"password\": \"password\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/auth/signin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"signin"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "user",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UserMe",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/auth/me",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"me"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "user",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "employee",
+			"item": [
+				{
+					"name": "Employee List",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"user\", \"password\": \"password\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/employees",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"employees"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "user",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Employee By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"user\", \"password\": \"password\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/employees/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"employees",
+								"1"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "user",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Working Schedule",
+			"item": [
+				{
+					"name": "Working Schedule List",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/working-schedules",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"working-schedules"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "user",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Working Schedule By Id",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/working-schedules/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"working-schedules",
+								"1"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "user",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Attendance Policy",
+			"item": [
+				{
+					"name": "Attendance Policy",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/attendance-policies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"attendance-policies"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "user",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Attendance Policy By Id",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/attendance-policies/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"attendance-policies",
+								"1"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "user",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Report",
+			"item": [
+				{
+					"name": "Report All Staff",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/report/staff-list?code=EMP-00001&gender=MALE",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"report",
+								"staff-list"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "EMP-00001"
+								},
+								{
+									"key": "gender",
+									"value": "MALE"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Report Staff Attendance Detail",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/report/staff-attendance-detail?code=EMP-00001&from_date=2023-01-01&end_date=2023-01-31",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"report",
+								"staff-attendance-detail"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "EMP-00001"
+								},
+								{
+									"key": "from_date",
+									"value": "2023-01-01"
+								},
+								{
+									"key": "end_date",
+									"value": "2023-01-31"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Report Total Staff By Gender",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:8080/api/report/total-staff-by-gender"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Scan",
+			"item": [
+				{
+					"name": "Scan QR Code",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:8080/api/report/total-staff-by-gender"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
