@@ -41,7 +41,7 @@ java -jar target/xxx.jar
 - Report by Staff: "http://localhost:8080/api/report/staff-attendance-detail?code=EMP-00001&from_date=2023-01-01&end_date=2023-01-31"
 
 ## Team
-### Initial Project Team - 2022
+### Initial Project Team - 2023
 - Lecturer: mt@osify.com
 - Ms. Thida TEK
 - Mr. Pengleng HUOT
